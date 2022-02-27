@@ -4,16 +4,16 @@
 \newcommand{\zh}[1]{}
 
 \zh{\usepackage{xeCJK}}
-\zh{\setCJKmainfont{SourceHanSerifSC-ExtraLight}}
-\zh{\setCJKsansfont{SourceHanSerifSC-ExtraLight}}
-\zh{\setCJKmonofont{SourceHanSerifSC-ExtraLight}}
+\zh{\setCJKmainfont{SourceHanSerifSC-Medium}}
+\zh{\setCJKsansfont{SourceHanSerifSC-Medium}}
+\zh{\setCJKmonofont{SourceHanSerifSC-Medium}}
 
 \begin{document}
 
 \name{\en{Huarui Chen}\zh{陈华睿}}
 \basicInfo{
       \email{chenhr1130@163.com} \textperiodcentered\
-      \phone{+(86) 152-89892071-2071} \textperiodcentered\
+      \phone{+(86) 152-8989-2071} \textperiodcentered\
       \github[hi-Ernest]{https://github.com/hi-Ernest}
       \homepage[Blog]{https://hi-ernest.github.io/}
 }
@@ -30,16 +30,16 @@
 
 \section{\en{Work Experience}\zh{工作经历}}
 \en{\datedsubsection{\textbf{\href{https://www.bytedance.com/}{ByteDance Inc.}}, Beijing, China}{04/2021 -- now}}
-\zh{\datedsubsection{\textbf{\href{https://www.bytedance.com/}{字节跳动}}}{2021/04 -- 至今}}
-\en{\role{Logistics and Supply Chain}{Backend Development Engineer}}
-\zh{\role{物流与供应链}{后端开发工程师}}
+\zh{\datedsubsection{\textbf{\href{https://www.bytedance.com/}{字节跳动科技有限公司，北京}}}{2021/04 -- 至今}}
+\en{\role{Supply Chain and Logistics}{Backend Development Engineer}}
+\zh{\role{供应链与物流}{后端开发工程师}}
 \begin{itemize}
       \item \en{Participate in the design of an abstract monitoring model, receive messages from different upstream data sources, convert them into configured events as triggers to start/end monitoring, find the corresponding timeout rules through events, and generate monitoring orders for the corresponding rules to perform monitoring. The monitoring list needs to be filled with data information, and the RPC interface needs to be called multiple times. In order to reduce multiple repeated requests, the result of building a memory cache request is stored in the context context; for infrequently changing rules and events, Timer is used to periodically obtain the cache from ByteSQL and store it in memory. , reduce query operations on DB.}
             \zh{参与设计抽象的监控模型，接收上游不同数据源的消息，转化为配置的事件作为触发开始/完结监控，通过事件找到对应的超时规则，生成对应规则的监控单进行履行监控。监控单需要填充数据信息，需要调用多次RPC接口，为了减少多次重复请求，构建内存缓存器请求结果存在context上下文中；针对不频繁变更规则和事件，采用Timer定时从ByteSQL获取缓存到内存当中，减少对DB查询操作。}
 \end{itemize}
 
 \en{\datedsubsection{\textbf{\href{https://www.hupu.com/}{Hupu Inc.}}, Shanghai, China}{07/2020 -- 01/2021}}
-\zh{\datedsubsection{\textbf{\href{https://www.hupu.com/}{虎扑（上海）文化传播公司}}}{2020/07 -- 2021/01}}
+\zh{\datedsubsection{\textbf{\href{https://www.hupu.com/}{虎扑（上海）文化传播公司，上海}}}{2020/07 -- 2021/01}}
 \en{\role{Product Development Group}{Backend Development Engineer}}
 \zh{\role{产品研发部}{后端开发工程师}}
 \begin{itemize}
