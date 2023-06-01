@@ -8,14 +8,14 @@
 \zh{\setCJKsansfont{SourceHanSerifSC-Medium}}
 \zh{\setCJKmonofont{SourceHanSerifSC-Medium}}
 
+
 \begin{document}
 
 \name{\en{Huarui Chen}\zh{陈华睿}}
 \basicInfo{
       \email{chenhr1130@163.com} \textperiodcentered\
       \phone{+(86) 152-8989-2071} \textperiodcentered\
-      \github[hi-Ernest]{https://github.com/hi-Ernest}
-      \homepage[Blog]{https://hi-ernest.github.io/}
+      \wechat{hi-Ernest}\textperiodcentered\
 }
 
 \section{\en{Education}\zh{教育经历}}
@@ -32,10 +32,20 @@
 \en{\datedsubsection{\textbf{\href{https://www.bytedance.com/}{ByteDance Inc.}}, Beijing, China}{04/2021 -- now}}
 \zh{\datedsubsection{\textbf{\href{https://www.bytedance.com/}{字节跳动科技有限公司，北京}}}{2021/04 -- 至今}}
 \en{\role{Supply Chain and Logistics}{Backend Development Engineer}}
-\zh{\role{供应链与物流}{后端开发工程师}}
+\zh{\role{抖音电商供应链与物流}{后端开发工程师}}
 \begin{itemize}
-      \item \en{Participate in the design of an abstract monitoring model, receive messages from different upstream data sources, convert them into configured events as triggers to start/end monitoring, find the corresponding timeout rules through events, and generate monitoring orders for the corresponding rules to perform monitoring. The monitoring list needs to be filled with data information, and the RPC interface needs to be called multiple times. In order to reduce multiple repeated requests, the result of building a memory cache request is stored in the context context; for infrequently changing rules and events, Timer is used to periodically obtain the cache from ByteSQL and store it in memory. , reduce query operations on DB.}
-            \zh{参与设计抽象的监控模型，接收上游不同数据源的消息，转化为配置的事件作为触发开始/完结监控，通过事件找到对应的超时规则，生成对应规则的监控单进行履行监控。监控单需要填充数据信息，需要调用多次RPC接口，为了减少多次重复请求，构建内存缓存器请求结果存在context上下文中；针对不频繁变更规则和事件，采用Timer定时从ByteSQL获取缓存到内存当中，减少对DB查询操作。}
+   		\item \en{Responsible for the research and development of the supply chain and logistics for Douyin's e-commerce platform. During my tenure, I have been involved in various aspects of the inbound logistics process, including supporting pre-shipment quality inspections for our worry-free service, intercepting express deliveries in our cloud warehouse, and monitoring delivery times to proactively prevent package delays. By providing solutions that empower our merchants, I have been able to enhance their supply chain and logistics performance and improve their overall fulfillment experience.}
+           	 \zh{负责抖音电商下供应链与物流的研发。期间参与云仓inbound入库链路、支持无忧服务的前置质检、云仓发货快递拦截、商家发货包裹超时预警监控等，提供解决方案赋能商家，提升商家供应链与物流的履约体验。}
+          \\使用的技术栈:Go/Kitex/Thirft/Gin/Herz/Grom/RocketMQ/Redis/MySQL\\
+          \begin{enumerate}
+             \item \en{Participated in the design and iteration of the inbound link of the cloud warehouse, which supports both ERP and non-ERP merchants in creating, printing replenishment orders, scheduling warehouse appointments, green channel appointment scheduling (subject to approval), capacity occupancy, and pre-inspection. We incubated the cloud warehouse inbound service, consolidated the industry logic (special appointment scheduling, expiration date、clear out rule verification, notify merchants of quality inspection results, etc.), decoupled the architecture code of the cloud warehouse industry and the inventory control platform, clarified responsibilities, and accelerated business iteration; implemented the strategy and factory pattern to support multiple rule verifications such as expiration date and returns, allowing for future scalability and extensibility. For the pre-shipment quality inspection project, multiple resources such as product photos, nameplate images, and PDF manuals need to be uploaded prior to warehousing. A universal mobile phone scanning and image uploading SDK was developed to support mobile scanning and uploading of images, which are then displayed on the PC side. This ensures the privacy and security of the uploaded images by limiting access to them and setting expiration times for the image links to prevent them from being used maliciously as image hosting sites. This SDK has been implemented in other areas of the supply chain, such as for the uploading of business licenses by cargo owners.}
+	       \zh{参与云仓inbound链路设计和迭代，支持ERP和无ERP商家创建、打印补货单、预约入库、绿通预约入库（需审批）、产能占用、前置质检等。孵化云仓inbound服务，收拢行业逻辑（绿通预约入库、效期规则、清退校验、质检结果触发商家等），将云仓行业和库控平台架构代码解耦，明确职责，加速业务迭代。针对多个规则校验，如效期、清退等，采用策略和工厂模式实现，支持后续扩展性。
+	       在入库前置质检项目中，需要上传多张货品实物、铭牌图片、说明书PDF等资源，沉淀通用手机扫码传图SDK，支持手机端扫码上传图反显到PC端，并且保证其隐私安全，限制扫码做到用后即焚，访问图片链接设置过期时间等，防止外界恶意用作图床。已支持供应链其他域使用，如货主入驻营业执照上传等场景。}\\
+	       \item \en{Participated in the design and implementation of the cloud warehouse express interception system as the overall project owner. I communicated and coordinated with downstream order fulfillment centers, logistics operations, and logistics work order domains for development and joint testing to ensure the smooth and risk-free launch of the project. Currently, the cloud warehouse intercepts x orders per day with an x success rate, resulting in x hours of reduced manpower. To handle the increasing volume of business and the need for multi-condition queries, we used MySQL and ES to store data. The system performs multi-condition joint queries by first querying ES, and then fetching and concatenating non-condition queries from MySQL. We used Faas to consume MySQL's binlog, concatenate data, and stream it to ES for synchronization.}
+	       \zh{参与云仓快递拦截设计和实现，作为整体项目owner，沟通协调下游订单履约中心、物流运配、物流工单各域的开发、联调，保障项目顺利无风险上线。目前云仓拦截单量达到x单/天，拦截成功率x，减少人力x小时。考虑查询多条件和业务量增长，使用MySQL和ES存储数据，多条件联合查询先查询ES，其他非条件查询从MySQL获取拼接返回。通过Faas消费MySQL的binlog，拼接数据后发MQ流式同步到ES。}\\
+     		 \item \en{Participated in the design and implementation of the QIC monitoring system, responsible for designing an abstract monitoring model, receiving messages from different data sources upstream, converting them to configured events as triggers for starting/ending monitoring cycles, and using the events to find corresponding timeout rules and generate monitoring orders for execution. The monitoring orders require filling in data information and calling multiple RPC interfaces, and to reduce repeated requests, a memory cache is constructed to store the request results in the context. Timer is used to obtain cached data from MySQL and store it in memory to reduce frequent DB queries, especially for infrequently changing rule and event configurations. This system is applied to monitoring processes in various domains, such as cross-border e-commerce and cloud warehousing.}
+           	 \zh{参与QIC监控系统设计和实现，负责设计抽象的监控模型，接收上游不同数据源的消息，转化为配置的事件作为触发开始/完结监控周期，通过事件找到对应的超时规则，生成对应规则的监控单进行履行监控。监控单需要填充数据信息，需要调用多次RPC接口，为了减少多次重复请求，构建内存缓存器请求结果存在context上下文中；针对不频繁变更规则和事件配置，采用Timer定时从ByteSQL获取缓存到内存当中，降低对DB频繁的查询操作。后续应用到监控环节和领域，如跨境、云仓行业。}\\
+	 \end{enumerate}
 \end{itemize}
 
 \en{\datedsubsection{\textbf{\href{https://www.hupu.com/}{Hupu Inc.}}, Shanghai, China}{07/2020 -- 01/2021}}
@@ -43,69 +53,73 @@
 \en{\role{Product Development Group}{Backend Development Engineer}}
 \zh{\role{产品研发部}{后端开发工程师}}
 \begin{itemize}
-            \item \en{Participate in the reconstruction of the basketball schedule list, responsible for the transformation of the schedule data, as well as the design and implementation of the schedule list API connection.}
-            \zh{参与重构篮球赛程列表，负责赛程数据的转化，以及赛程列表API接口设计与实现。}
-            \item \en{Reduce the amount of interface access through cache (local cache, Redis cache); use thread pool to synchronize asynchronously and synchronize game data in real time.}
-            \zh{通过缓存减少接口访问量(本地缓存、Redis缓存)；使用线程池并发异步，实时同步比赛数据 }
+            \item \en{Responsible for the development of the basketball and esports channels in the Hupu APP. During this period, participated in splitting suitable granularity microservice applications, completed the Java migration of important functions such as basketball schedule list, live broadcast room, and scoreboard, as well as data synchronization of teams, players, and matches. Mapped and decoupled external data sources with the Hupu system to enhance the fault tolerance of data information.
+            \\Technology stack:Java/SpringCloud/SpringBoot/SpringMVC/MyBatis/Redis/RocketMQ/XXl- Job/Apollo/Maven}
+            \zh{负责虎扑APP中篮球、电竞频道的研发。期间参与拆分颗粒度合适的微服务应用，完成篮球赛程列
+表、赛事直播间、比分牌等重要功能的Java化迁移，以及球队球员、比赛等数据同步，将外部数据源
+与虎扑系统进行映射和解耦，增强数据信息的容错性。
+	   \\使用的技术栈:Java/SpringCloud/SpringBoot/SpringMVC/MyBatis/Redis/RocketMQ/XXl- Job/Apollo/Maven}\\
+	   \begin{enumerate}
+		 \item \en{Participated in the Java migration of the basketball schedule list, responsible for the transformation of schedule data and the design and implementation of the schedule list API. In response to the high access rate of the schedule list, the schedule data needs to be preheated to the local cache before service registration and startup. To address the issue of excessively long time for batch query of match times from MySQL, CompletableFuture and ThreadPoolExecutor were used to perform concurrent and asynchronous queries of MatchModel from MySQL and store the results in MatchList. To prevent the issue of cache avalanche, MatchList was partitioned and the nodes were randomly assigned expiration values before being stored in Redis cache.}
+           	\zh{参与篮球赛程列表Java化，负责赛程数据的转化，以及赛程列表API接又设计与实现。针对赛程 列表高访问接又，服务注册启动前，需要对赛程数据预热到本地缓存。遇到从MySQL批量查询 比赛时间过长问题，于是采用CompletableFuture和ThreadPoolExecutor结合并发异步查询MySQL 获取MatchModel，存储在MatchList中。为了防止缓存雪崩问题，将MatchList分批次节点打散设 置随机过期值，存储到Redis缓存。 }\\
+
+            	 \item \en{Participated in the Java migration of the live broadcast scoreboard and was responsible for the design and implementation of the scoreboard API. In response to the high hit rate of scoreboard data access, the scoreboard data was stored in Redis cache with an expiration time set. To ensure the timeliness of scoreboard information updates during matches, an xxl-job was used to query real-time data from the live broadcast room and compare it with the latest snapshot version of the scoreboard stored in the cache. If there was any data change, a new snapshot version was added. Considering the immaturity of the previous and current solutions, the previous Redis publish-subscribe mechanism was combined with the current MQTT double push to provide updates to the frontend. To address the issue of instability and frequent errors in the data source for the scoreboard, a Groovy script was written to compare data from multiple sources. Any discrepancies triggered a DingTalk alert to ensure timely identification and resolution of data issues.}
+	 	 \zh{参与比赛直播间比分牌的Java化，负责比分牌API接又的设计与实现。针对比分牌数据访问命中 率高问题，将比分数据放在Redis缓存并设置过期时间。为了保证比赛中比分牌信息变更的及时 性，采用xxl-job定时去查询直播间实时数据，再与缓存中比分牌最新的快照版本进行比较，如 果有数据变更则添加新快照版本，又考虑之前和现在方案存在不成熟情况，采用之前的Redis发 布订阅和现在MQTT 双推送的方式给前端。考虑数据源比分数据经常不稳定容易出错问题，写 Groovy脚本多数据源比较，不一致则发送钉钉报警，做好风险预警和及时解决数据问题。}\\
+            \end{enumerate}
 \end{itemize}
 
 \section{\en{Skills}\zh{技能}}
 \begin{itemize}[parsep=0.25ex]
-       \item \en{\textbf{Programming Languages}:
-                        \textbf{multilingual} (not limited to any specific language), 
-                  	experienced in Golang/Java,
-                  	comfortable with Rust/Python/C/C++.}
-            \zh{\textbf{编程语言}:
-                 \textbf{泛语言}（编程不受特定语言限制），
-                  熟悉 Golang/Java，
-               了解 Rust/Python/C/C++ 等}
-                           
-       \item \en{\textbf{Data Structures and Algorithms}:
-                        familiar with common data structures (Array, List, Stack, Queue, Map, Set, BinTree, BST), 
-                        understand AVL, RBtree, B/B+ tree, skip list, familiar with commonly used sorting algorithms (Bubble, Insert, Select, Merge, QuickSort, HeapSort, Bucket, Count).}
-                \zh{\textbf{数据结构与算法}:
-                		{熟悉常用数据结构}（Array、List、Stack、Queue、Map、Set、BinTree、BST），
-		       了解AVL、RBtree、B/B+树、跳表；
-                          熟悉常用的排序算法（冒泡、插入、选择、归并、快排、堆排、桶、计数）。}
+       \item \en{Familiar with Go programming, understanding of object-oriented thinking, proficient in Go encapsulation, composition, and interface features.}
+            \zh{熟悉Go编程，理解面向对象思想，掌握封装、组合和接口的特性 }
 
-      \item \en{\textbf{Distributed System/Database}:
-                  Experience in tuning and deployment of TiDB, know the basic use of K8s and tidb-operator.
-                  taken course MIT 6.824 and PingCAP's Talent Plan,
-                  understand the basic theory of distributed system/database,
-                  including but not limited to algorithms such as Raft and Percolator.}
-              \zh{\textbf{分布式系统/数据库}:
-                  有分布式数据库 TiDB 的调优开发以及部署经验，了解 K8s 以及 tidb-operator 的基本使用。
-                  自主学习了 MIT 6.824 和 PingCAP's Talent Plan 等课程，
-                  了解分布式系统/数据库的基本理论，包括但不限于 Raft 和 Percolator 等算法}
-                  
-      \item \en{\textbf{Developing Tool}:
-                  familiar with Linux-based programming,
-                  have experience with team tools like Git, Jira, etc.}
-            \zh{\textbf{开发工具}:
-                  熟悉 Linux，有 Git、Jira 等团队协作工具的使用经验}
-   
-     \item \en{\textbf{Others}:
-                  have experience using MySQL/Redis/RocketMQ/Elasticsearch, 
-                  understand Docker and Docker orchestration concepts, 
-                  have experience in developed logistics performance monitoring to support multi-dimensional query, 
-                  used Elasticsearch to solve multi-condition query problems.}
-          \zh{\textbf{其它}:	 	 
-                  有 MySQL/Redis/RocketMQ/Elasticsearch 使用经验，了解容器及容器编排相关概念，
-               开发过物流履约监控支持多维度查询，使用 Elasticsearch 解决多条件查询问题。}
+       \item \en{Familiar with Java programming, understanding of object-oriented thinking, proficient in Java encapsulation, inheritance, and polymorphism features.}
+                \zh{熟悉Java编程，理解面向对象思想，掌握Java封装、继承和多态特性}
+
+      \item \en{Familiar with common data structures (Array, List, Stack, Queue, Map, Set, BinTree, BST),
+                        understand AVL, RBtree, B/B+ tree, skip list).}
+                \zh{熟悉常用数据结构（Array、List、Stack、Queue、Map、Set、BinTree、BST），
+		       了解AVL、RBtree、B/B+树、跳表}
+
+      \item \en{Familiar in commonly used sorting algorithms including bubble sort, insertion sort, selection sort, merge sort, quicksort, heapsort, bucket sort, and counting sort.}
+              \zh{熟悉常用的排序算法(冒泡、插入、选择、归并、快排、堆排、桶、计数)}
+
+       \item \en{Familiar in Go concurrency programming, including goroutines and channels, waitGroup usage, and locking control (Mutex, RWMutex, Once).}
+            \zh{熟悉Go并发编程，协程和通道、waitGroup使用、加锁控制(Mutex、RWMutex、Once)}
+
+       \item \en{Understanding of Go's garbage collection (three-color marking, mixed write barrier) and memory allocation.}
+           \zh{了解Go的垃圾回收（三色标记、混合写屏障）、内存分配}
+
+      \item \en{Familiar with Java multi-threading, including thread creation, locking control (Synchronized, ReentrantLock), and understanding of CAS.}
+           \zh{熟悉Java多线程，线程创建、加锁控制(Synchronized、ReentrantLock)，了解CAS}
+
+       \item \en{Understanding of Java Virtual Machine, including runtime data areas, GC collection and recovery, and class loading mechanisms.}
+           \zh{了解Java虚拟机，运行时数据区域、GC回收和收集、类加载机制}
+
+      \item \en{Familiar with the OSI seven-layer model and the TCP/IP four-layer hierarchical structure, proficient in common network protocols including HTTP, TCP, UDP, ARP, ICMP, DNS, and DHCP.}
+            \zh{熟悉OSI七层模型和TCP/IP四层体系分层结构，掌握常见的网络协议(HTTP、TCP、UDP、 ARP、ICMP、DNS、DHCP)}
+
+       \item \en{Familiar with the TCP three-way handshake and four-way handshake, knowledgeable about TCP flow control and congestion control, and familiar with the working principles of the security mechanisms of HTTPS.}
+            \zh{熟悉TCP三次握手和四次挥手，了解TCP流量控制和拥塞控制，了解Https的安全机制的工作原理}
+
+       \item \en{Familiar with database transaction properties and transaction isolation levels, knowledgeable about MVCC, Next-Key Locks, snapshot read, and current read. Proficient in MySQL index principles and query performance optimization.}
+            \zh{熟悉数据库事务特性、事务隔离级别，了解MVCC、Next-Key Locks、快照读与当前读}
+
+       \item \en{Familiar with storage engines (InnoDB, MyISAM), and master-slave replication.}
+            \zh{熟悉MySQL索引原理、查询性能优化，了解存储引擎(InnoDB、MyISAM)、主从复制}
+
+       \item \en{Familiar with Redis data types, knowledgeable about expired key deletion, data eviction policies, RDB and AOF persistence mechanisms.}
+            \zh{熟悉Redis数据类型，了解过期键删除、数据淘汰策略、RDB和AOF持久化机制}
+
+       \item \en{Knowledgeable about using RocketMQ message queues, Elasticsearch, XXl-Job distributed scheduling framework, and Apollo distributed configuration center.}
+            \zh{了解使用RocketMQ消息队列、Elasticsearch、XXl-Job分布式调度框架、Apollo分布式配置中心}
+
 \end{itemize}
 
-\section{\en{Miscellaneous}\zh{其他}}
+\section{\en{Thanks}\zh{致谢}}
 \begin{itemize}
-      \item \en{Interests: computer systems and architecture, parallel computing, databases and cloud applications.}
-            \zh{兴趣：分布式系统、存储、数据库、云计算应用等。}
-      \item \en{Open-source Contributions: contributed to \texttt{@rust-analyzer, @rust-osdev, @jupyter, @pingcap}, etc.}
-            \zh{开源贡献: 为 \texttt{@rust-analyzer, @rust-osdev, @jupyter, @pingcap} 等组织贡献过代码。}
-      \item \en{\textbf{Passionate about sharing}: I have been writing on my personal blog for years and have accumulated several high-quality technical sharing articles.}
-            \zh{\textbf{热爱分享}: 在个人博客上常年坚持写作，积累高质量技术分享文章数篇}
-       \item \en{\textbf{Language Level}: Ability to conduct daily conversation and essay reading, experience in English presentation.}
-            \zh{\textbf{语言水平}：能够进行日常对话和论文阅读，有英文演讲经验}
-       \item \en{\textbf{Personal tags}: self-driven, quick learner, earnest curiosity, open source lover.}
-            \zh{\textbf{个人标签}：自驱动，学习能力强，做事认真，保持好奇，热爱开源}
+      \item \en{Thank you for taking the time to review my resume. I look forward to the opportunity to work with you.}
+            \zh{感谢您花时间阅读我的简历，期待能有机会和您共事}
 \end{itemize}
 
 \end{document}
