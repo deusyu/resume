@@ -4,6 +4,14 @@
 
 This is my résumé based on [this template](https://github.com/billryan/resume) and [imtsuki](https://github.com/imtsuki/resume)
 
+## Prerequisites
+Before starting, ensure you have the following:
+- XeLaTeX installed. For macOS, use: 
+```zsh
+brew install --cask mactex
+```
+For other systems, please search for installation instructions.
+
 ## Build
 
 ```bash
