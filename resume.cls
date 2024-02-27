@@ -108,3 +108,7 @@
   {\par (#1) \textit{#2} \par}
 }
 
+% defines one's role with date
+\newcommand{\rolewithdate}[3]{
+  {(#1) \textit{#2} \hfill #3}
+}

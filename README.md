@@ -18,6 +18,12 @@ For other systems, please search for installation instructions.
 make all
 ```
 
+## Format
+use atexindent.pl to format your latex:
+```zsh
+brew install latexindent
+```
+
 ## Download/下载
 
 - [English version (pdf)](./resume.pdf)
