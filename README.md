@@ -19,13 +19,13 @@ make all
 ```
 
 ## Format
-use atexindent.pl to format your latex:
+Use atexindent.pl to format your latex:
 ```zsh
 brew install latexindent
 ```
 
 ## Download/下载
 
-- [English version (pdf)](./resume.pdf)
 - [中文版 (pdf)](./resume-zh.pdf)
+- [English version (pdf)](./resume.pdf)
 - [LaTeX Source](./resume.tex)
